@@ -15,7 +15,8 @@
 
 class Student {
 
-	//Data members private
+	//Priviate data members - we make them private so we can protect the data
+	//This enforces encapsulation. We control access through the public member functions
 private:
 	std::string name_;
 	std::string registrstionID_;
@@ -26,11 +27,17 @@ private:
 	int moduleThreeMark_;
 
 public:
+	//Public member functions
+
+	//Our default constructor. This does nothing other than create an empty student object. 
+	//There isn't any data in the student object
 	Student();
 
+	//Custom constructor. We use this to initialise the object with data we pass in
 	Student(std::string name, std::string registration, std::string course, int yearofStudy,
 		int moduleMark1, int moduleMark2, int moduleMark3);
 
+	//Getters and setters for each member variable
 	void SetName(std::string name);
 	std::string GetName() const;
 

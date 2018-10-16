@@ -10,16 +10,30 @@
 
 #include "Student.h"
 
+//Default constuctor
+//Note how we use the scope resolution operator ::
+//We do that to specify which class the member functions belong to
+//Class_Name::Member_Function
 Student::Student() {}
 
+//This constructor creates and initialises it by copying the data from each variable
+//into the specified data member. We use an initializer list but we could also initialize each
+//variable by using assignment statements in the main body of the function
 Student::Student(std::string name, std::string registration, std::string course, int yearofStudy,
 	int moduleMark1, int moduleMark2, int moduleMark3) : name_{ name }, registrstionID_{ registration }, course_{ course},
 	yearofStudy_{ yearofStudy}, moduleOneMark_{ moduleMark1 }, moduleTwoMark_{ moduleMark2 }, moduleThreeMark_{ moduleMark3 }
-{};
+{
+	//we could assign the values of the parameters to the data members like this
+	//name_ = name;
+};
 
+
+//Getters and setters
 void Student::SetName(std::string name) {
 	name_ = name;
 }
+//Make getters const so that it tells the compiler to complain if we accidentlly 
+//try to change a data member 
 std::string Student::GetName() const {
 	return name_;
 }
@@ -94,3 +108,38 @@ std::string Student::CalculateClassification() const {
 		return "1st class";
 
 }
+
+
+//Declarw an array of type int 
+//Compile knows we need 5 ints of size 4 bytes so 20 bytes in total
+int numbers[5];
+numbers[0] = 0;
+numbers[1] = 10;
+numbers[2] = 20;
+numbers[3] = 30;
+numbers[4] = 40;
+
+//or initialise them using an initialiser list
+
+float numbers2[5]{ 30.2f, 43.5f, 76.4f, 32.9f, 12.1f };
+//what happens if we forget to give 5 values? - missing elements are value initialised
+
+int numbers[5];
+int index;
+
+for (index = 0; index < 5; index++) {
+	cout << "\nPlease enter number " << index + 1 << " : ";
+	cin >> numbers[index];
+}
+
+
+/////
+
+//use the sizeof() to get the size of the array in bytes
+
+//Calculate the size of the array
+//cout << "The size of the array is " << sizeof(numbers)/ GetSize(numbers);
+int arraysize = sizeof(numbers) / sizeof(numbers[0]);
+cout << "The size of the array is " << arraysize;
+
+
